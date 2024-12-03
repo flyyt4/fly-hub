@@ -1,0 +1,48 @@
+---
+import { cn } from "@/lib/utils";
+import Body from "./Body";
+import TitleBar from "./TitleBar";
+import Nav from "./Nav";
+import Content from "./Content/Content";
+import StatusBar from "./StatusBar";
+import { Toaster } from "../ui/toaster";
+import "@/styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <Body>
+    <div
+      class={cn(
+        "grid grid-rows-[calc(2.5rem+1px)_1fr_calc(1.3rem+1px)] min-h-screen bg-background",
+        "text-foreground overflow-hidden"
+      )}
+    >
+      <div class="border-b">
+        <TitleBar client:load />
+      </div>
+      <div
+        class="grid grid-cols-[calc(3rem+1px)_1fr] max-h-[calc(100vh-(2.5rem+1px+1.3rem+1px))]"
+      >
+        <div class="border-r max-h-[calc(100vh-(2.5rem+1px+1.3rem+1px))]">
+          <Nav client:load />
+        </div>
+        <div>
+          <Content client:load>
+            
+          </Content>
+        </div>
+      </div>
+      <div class="border-t">
+        <StatusBar client:load />
+      </div>
+    </div>
+    <Toaster client:load />
+  </Body>
+</html>
